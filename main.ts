@@ -8,10 +8,9 @@
 // variables
 let randomNumber: number = 0
 let score: number = 0
-let scoreNumber = score
 
 input.onButtonPressed(Button.A, function () {
-    let scoreNumber = score + 1
+    score = score + 1
     basic.clearScreen()
     basic.showIcon(IconNames.Yes)
     basic.pause(1000)
@@ -20,7 +19,7 @@ input.onButtonPressed(Button.A, function () {
 
 input.onButtonPressed(Button.B, function () {
     basic.clearScreen()
-    basic.showString('Score:' + scoreNumber)
+    basic.showString('Score:' + score)
     basic.pause(1000)
     basic.showIcon(IconNames.Happy)
 })
@@ -35,7 +34,13 @@ input.onGesture(Gesture.Shake, function () {
 
     // if randomNumber was 0
     if (randomNumber == 0) {
-        basic.showIcon(IconNames.SmallSquare)
+        basic.showLeds(`
+        . . . . .
+        . # # # .
+        . # # # .
+        . # # # .
+        . . . . .
+        `)
     }
 
     // if randomNumber was 1
@@ -49,6 +54,6 @@ input.onGesture(Gesture.Shake, function () {
     }
 
     // pause and show you are ready again
-    basic.pause(1000)
+    basic.pause(5000)
     basic.showIcon(IconNames.Happy)
 })
